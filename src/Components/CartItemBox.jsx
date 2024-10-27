@@ -16,7 +16,7 @@ const CartItemBox = ({CartItem}) => {
             <div className='w-5 h-5 rounded-full flex items-center justify-center cursor-pointer border-[1px] border-[--Rose-500]' onClick={()=> {
                 setCartItem(removeIcon(CartItem.name));
             }}>
-                <img src="assets/images/icon-remove-item.svg" alt="removeIcon" />
+                <img src="assets/images/icon-remove-item.svg" alt="removeIcon" loading='lazy' />
             </div>
         </div>
     )

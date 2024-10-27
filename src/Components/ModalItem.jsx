@@ -2,7 +2,7 @@ export default function ModalItem({ product }) {
     return (
         <div className="flex items-center justify-between pb-4 pt-2 border-b-[1px] border-[--Rose-100]">
             <div className="flex items-start gap-2 justify-between">
-                <img className="w-16 h-16 rounded-md" src={product.thumbnail} alt={product.name} />
+                <img className="w-16 h-16 rounded-md" src={product.thumbnail} alt={product.name} loading="lazy" />
                 <div>
                     <h1 className="font-bold text-[--Rose-900]">{product.name}</h1>
                     <div className="flex gap-2 items-center">
