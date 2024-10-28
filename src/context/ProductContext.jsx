@@ -1,12 +1,18 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect} from "react";
 
 import data from '../../data.json'
+import { useLocalStorageData } from "../Hook/useLocalStorageData";
 export const ProductList = createContext();
 
 const ProductContext = ({ children }) => {
-    const [Products, setProducts] = useState(data);
-    const [CartItem, setCartItem] = useState([]);
-    const [Quantity, setQuantity] = useState(1);
+    const [Products, setProducts] = useLocalStorageData('Data', data);
+    const [CartItem, setCartItem] = useLocalStorageData('CartItem',[])
+    const [Quantity, setQuantity] = useLocalStorageData('ProductQuantity', []);
+
+
+    useEffect(()=> {
+        localStorage.setItem('CartItem',JSON.stringify(CartItem));
+    },[Quantity])
 
     const isProductAvailable = (ProductName) => {
         return CartItem.findIndex((item) => item.name === ProductName) !== -1;
@@ -14,9 +20,10 @@ const ProductContext = ({ children }) => {
 
     const decrementQuantity = (ProductName) => {
         return CartItem.map((item) => {
-            if (item.name === ProductName && item.quantity > 1) {
+            if (item.name === ProductName && item.quantity > 0) {
                 item.quantity--;
-                setQuantity(Quantity - 1)
+                setCartItem(CartItem.filter((item) => item.quantity !== 0));
+                setQuantity(CartItem.map((item) => item.quantity))
             }
             return item.quantity;
         });
@@ -24,9 +31,9 @@ const ProductContext = ({ children }) => {
 
     const incrementQuantity = (ProductName) => {
         return CartItem.map((item) => {
-            if(item.name === ProductName)  {
-                item.quantity++ ;
-                setQuantity(Quantity + 1)
+            if (item.name === ProductName) {
+                item.quantity++;
+                setQuantity(CartItem.map((item) => item.quantity))
             }
         })
     }
@@ -60,7 +67,8 @@ const ProductContext = ({ children }) => {
             decrementQuantity,
             incrementQuantity,
             getCartItem,
-            removeIcon
+            removeIcon,
+            Quantity
         }}>
             {children}
         </ProductList.Provider>
