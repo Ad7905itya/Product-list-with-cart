@@ -12,7 +12,7 @@ function App() {
   return (
     <>
     <h1 className={`text-[40px] ml-5 text-[--Rose-900] font-bold max-w-[1440px] z-20 backdrop-blur-lg w-[90%] 2xl:m-auto ${IsModalOpen? 'fixed': ''}`}>Desserts</h1>
-    <main className={`max-w-[1440px] xl:m-auto gap-20 flex items-start flex-wrap ${IsModalOpen? 'fixed': ''}`}>
+    <main className={`max-w-[1440px] xl:m-auto gap-12 xl:gap-20 flex items-start flex-wrap ${IsModalOpen? 'fixed': ''}`}>
       <ProductList />
       <Cart setIsModalOpen={setIsModalOpen} />
       {createPortal(<Modal setIsModalOpen={setIsModalOpen} IsModalOpen={IsModalOpen} />,document.getElementById('portal'))}
