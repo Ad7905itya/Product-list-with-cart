@@ -20,7 +20,7 @@ const Modal = ({IsModalOpen,setIsModalOpen}) => {
                     <h1 className="text-2xl font-bold">${totalPriceCount().toFixed(2)}</h1>
                 </div>
             </div>
-            <button className="w-full mb-5 mt-3 bg-[--Red] py-2 font-medium text-white text-lg rounded-3xl" onClick={onClick}>Start New Order</button>
+            <button className="w-full mb-5 mt-3 bg-[--Red] py-2 font-medium text-white text-lg rounded-3xl" onClick={onClick}>Order Confirmed</button>
             </div>
         </div>
     )

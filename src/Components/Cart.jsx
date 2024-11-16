@@ -1,11 +1,15 @@
 import React from 'react'
 import CartItemBox from './CartItemBox'
 import useProductsData from '../Hook/useProductsData'
+import { MdArrowBack } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
-const Cart = ({setIsModalOpen}) => {
+const Cart = ({IsModalOpen, setIsModalOpen}) => {
     const { CartItem, totalItemCount, totalPriceCount } = useProductsData();
     return (
-        <div className='max-w-xs w-full m-auto lg:m-0 rounded-xl bg-white p-5'>
+        <section className={`max-w-[1440px] w-full xl:m-auto py-6 px-5 ${IsModalOpen? 'fixed left-12 top-20': 'static'}`}>
+            <Link to={'/'} ><MdArrowBack size={38} className='ml-5 hover:text-white rounded-full hover:bg-slate-600 p-1' /></Link>
+        <div className='w-full md:w-2/3 m-auto mt-5 rounded-xl bg-white p-5'>
             <h1 className='text-2xl text-[--Red] font-bold'>Your Cart ({totalItemCount()})</h1>
             {
                 !totalItemCount() ? (<div className='flex mt-10 gap-2 flex-col items-center justify-center'>
@@ -29,6 +33,7 @@ const Cart = ({setIsModalOpen}) => {
                 )
             }
         </div>
+        </section>
     )
 }
 
