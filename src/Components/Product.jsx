@@ -32,7 +32,7 @@ const Product = ({ ProductList }) => {
                     </div>
                 )}
             </div>
-            <p className='text-[--Rose-500] mt-6'>{ProductList.category}</p>
+            <p className='text-[--Rose-500] mt-8'>{ProductList.category}</p>
             <h1 className='text-lg text-[--Rose-900] font-semibold'>{ProductList.name}</h1>
             <p className='text-[--Red]'>${ProductList.price.toFixed(2)}</p>
         </div>

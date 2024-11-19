@@ -8,7 +8,7 @@ const Cart = ({IsModalOpen, setIsModalOpen}) => {
     const { CartItem, totalItemCount, totalPriceCount } = useProductsData();
     return (
         <section className={`max-w-[1440px] w-full xl:m-auto py-6 px-5 ${IsModalOpen? 'fixed left-12 top-20': 'static'}`}>
-            <Link to={'/'} ><MdArrowBack size={38} className='ml-5 hover:text-white rounded-full hover:bg-slate-600 p-1' /></Link>
+            <MdArrowBack onClick={()=> history.back()} size={38} className='ml-5 hover:text-white rounded-full hover:bg-slate-600 p-1' />
         <div className='w-full md:w-2/3 m-auto mt-5 rounded-xl bg-white p-5'>
             <h1 className='text-2xl text-[--Red] font-bold'>Your Cart ({totalItemCount()})</h1>
             {
