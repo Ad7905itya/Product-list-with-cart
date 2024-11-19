@@ -11,7 +11,7 @@ const Product = ({ ProductList }) => {
         }])
     }
     return (
-        <div className='max-w-72 relative'>
+        <div className='w-full relative px-5'>
             <div className='w-full rounded-xl overflow-hidden'>
                 <picture>
                     <source media='(min-width:768px)' srcSet={ProductList.image.tablet} />
@@ -19,9 +19,9 @@ const Product = ({ ProductList }) => {
                     <img loading='lazy' src={ProductList.image.thumbnail} alt="" />
                 </picture>
                 {!isProductAvailable(ProductList.name) ? (
-                    <button className='flex py-2 md:px-3 w-[70%] text-sm items-center justify-center gap-2 rounded-3xl bg-white text-[--Rose-900] hover:border-[--Red] hover:text-[--Red] border-[1px] border-[--Rose-300] absolute left-1/2 -translate-x-1/2 -translate-y-1/2 font-semibold' onClick={onClick}><img src="assets/images/icon-add-to-cart.svg" alt="cart image" loading='lazy' />Add to Cart</button>
+                    <button className='flex py-3 md:px-3 w-[70%] text-sm items-center justify-center gap-2 rounded-3xl bg-white text-[--Rose-900] hover:border-[--Red] hover:text-[--Red] border-[1px] border-[--Rose-300] absolute left-1/2 -translate-x-1/2 -translate-y-1/2 font-semibold' onClick={onClick}><img src="assets/images/icon-add-to-cart.svg" alt="cart image" loading='lazy' />Add to Cart</button>
                 ) : (
-                    <div className='flex py-2 md:px-3 w-[70%] text-sm items-center justify-around gap-2 rounded-3xl bg-[--Red] text-[--Rose-900]   border-none absolute left-1/2 -translate-x-1/2 -translate-y-1/2 font-semibold'>
+                    <div className='flex py-3 md:px-3 w-[70%] text-sm items-center justify-around gap-2 rounded-3xl bg-[--Red] text-[--Rose-900]   border-none absolute left-1/2 -translate-x-1/2 -translate-y-1/2 font-semibold'>
                         <div className='w-6 h-6 hover:bg-[--Rose-300] rounded-full flex justify-center items-center border-[1px] border-[--Rose-100]' onClick={()=> decrementQuantity(ProductList.name)}>
                             <img src="assets/images/icon-decrement-quantity.svg" alt="decrementIcon" loading='lazy' />
                         </div>
@@ -32,7 +32,7 @@ const Product = ({ ProductList }) => {
                     </div>
                 )}
             </div>
-            <p className='text-[--Rose-500] mt-6'>{ProductList.category}</p>
+            <p className='text-[--Rose-500] mt-8'>{ProductList.category}</p>
             <h1 className='text-lg text-[--Rose-900] font-semibold'>{ProductList.name}</h1>
             <p className='text-[--Red]'>${ProductList.price.toFixed(2)}</p>
         </div>
