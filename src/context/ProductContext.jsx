@@ -1,18 +1,29 @@
-import { createContext, useEffect} from "react";
-
-import data from '../../data.json'
+import { createContext, useEffect, useState } from "react";
 import { useLocalStorageData } from "../Hook/useLocalStorageData";
+
 export const ProductList = createContext();
 
+async function Product() {
+    const res = await fetch('https://dummyjson.com/recipes');
+    const data = await res.json();
+    return data
+}
+
+
 const ProductContext = ({ children }) => {
-    const [Products, setProducts] = useLocalStorageData('Data', data);
-    const [CartItem, setCartItem] = useLocalStorageData('CartItem',[])
+    const [Products, setProducts] = useState([]);
+    const [CartItem, setCartItem] = useLocalStorageData('CartItem', [])
     const [Quantity, setQuantity] = useLocalStorageData('ProductQuantity', []);
 
+    const ProductData = Product();
 
-    useEffect(()=> {
-        localStorage.setItem('CartItem',JSON.stringify(CartItem));
-    },[Quantity])
+    ProductData.then((data) => {
+        setProducts(data.recipes)
+    })
+
+    useEffect(() => {
+        localStorage.setItem('CartItem', JSON.stringify(CartItem));
+    }, [Quantity])
 
     const isProductAvailable = (ProductName) => {
         return CartItem.findIndex((item) => item.name === ProductName) !== -1;
