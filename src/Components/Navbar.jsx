@@ -7,7 +7,7 @@ const Navbar = ({ totalItemCount }) => {
     return (
         <header className='border-b-2'>
             <div className='flex justify-between items-center backdrop-blur-lg m-auto px-8 py-6 max-w-[1440px]'>
-                <h1 className='flex items-center gap-3 font-bold text-[--Rose-900] text-3xl'>
+                <h1 onClick={()=> history.back()} className='flex items-center gap-3 font-bold text-[--Rose-900] text-3xl cursor-pointer'>
                     <SiShopee size={30} />
                     <span>FoodShop</span>
                 </h1>

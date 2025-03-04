@@ -31,7 +31,7 @@ const Product = ({
                         alt="" />
                     {onFocus &&
                         <div
-                            className='top-16 left-1/2 absolute flex flex-col justify-center items-center px-12 py-3 w-full text-sky-900 text-sm -translate-x-1/2 -translate-y-1/2'>
+                            className='top-52 left-1/2 absolute flex flex-col justify-center items-center px-12 py-8 w-full text-sky-900 text-lg -translate-x-1/2 -translate-y-1/2'>
                             <p>
                                 <span className='font-bold'>ingredients :&nbsp;</span>
                                 {ingredients.filter((ingredient, index) => index < 3)
@@ -40,14 +40,14 @@ const Product = ({
                         </div>}
                 </div>
                 {!isProductAvailable(name) ? (
-                    <button className='left-1/2 absolute flex justify-center items-center gap-2 border-[--Rose-300] border-[1px] hover:border-[--Red] bg-white md:px-3 py-3 rounded-3xl w-[70%] font-semibold text-[--Rose-900] text-sm hover:text-[--Red] -translate-x-1/2 -translate-y-1/2' onClick={onClick}><img src="assets/images/icon-add-to-cart.svg" alt="cart image" loading='lazy' />Add to Cart</button>
+                    <button className='left-1/2 absolute flex justify-center items-center gap-2 bg-white md:px-3 py-3 border-[--Rose-300] border-[1px] hover:border-[--Red] rounded-3xl w-[70%] font-semibold text-[--Rose-900] hover:text-[--Red] text-sm -translate-x-1/2 -translate-y-1/2' onClick={onClick}><img src="assets/images/icon-add-to-cart.svg" alt="cart image" loading='lazy' />Add to Cart</button>
                 ) : (
                     <div className='left-1/2 absolute flex justify-around items-center gap-2 bg-[--Red] md:px-3 py-3 border-none rounded-3xl w-[70%] font-semibold text-[--Rose-900] text-sm -translate-x-1/2 -translate-y-1/2'>
-                        <div className='flex justify-center items-center border-[--Rose-100] border-[1px] hover:bg-[--Rose-300] rounded-full w-6 h-6' onClick={() => decrementQuantity(name)}>
+                        <div className='flex justify-center items-center hover:bg-[--Rose-300] border-[--Rose-100] border-[1px] rounded-full w-6 h-6' onClick={() => decrementQuantity(name)}>
                             <img src="assets/images/icon-decrement-quantity.svg" alt="decrementIcon" loading='lazy' />
                         </div>
                         <p className='text-[--Rose-100]'>{getCartItem(name)}</p>
-                        <div className='flex justify-center items-center border-[--Rose-100] border-[1px] hover:bg-[--Rose-300] rounded-full w-6 h-6' onClick={() => incrementQuantity(name)}>
+                        <div className='flex justify-center items-center hover:bg-[--Rose-300] border-[--Rose-100] border-[1px] rounded-full w-6 h-6' onClick={() => incrementQuantity(name)}>
                             <img src="assets/images/icon-increment-quantity.svg" alt="incrementIcon" loading='lazy' />
                         </div>
                     </div>
